@@ -3,5 +3,5 @@ from apps.candles.views import CandleList
 
 
 urlpatterns = [
-    path('candles/', CandleList)
+    path('candles/', CandleList.as_view())
 ]

@@ -1,5 +1,6 @@
 from django.db import models
-from core.models import BaseModel
+
+from apps.base.models import BaseModel
 
 class Candle(BaseModel):
     name: models.CharField(max_length=100)

@@ -3,7 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from apps.candles.models import Candle
-from serializers import CandleSerializer
+from apps.candles.serializers import CandleSerializer
+
 
 class CandleList(APIView):
     def get(self, request):
