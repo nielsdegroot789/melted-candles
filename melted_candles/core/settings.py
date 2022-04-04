@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.candles'
 ]
 
 MIDDLEWARE = [
@@ -49,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'melted_candles.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'melted_candles.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
