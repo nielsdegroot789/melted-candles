@@ -8,7 +8,6 @@ from apps.products.serializers import ProductSerializer
 
 class ProductList(APIView):
     def get(self, request):
-        candles = Product.Objects.all()
-        serializer = ProductSerializer(candles)
-        print(serializer.data, 'hallo')
+        product = Product.objects.all()
+        serializer = ProductSerializer(product)
         return Response(serializer.data)

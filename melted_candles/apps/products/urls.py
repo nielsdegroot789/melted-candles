@@ -3,5 +3,5 @@ from apps.products.views import ProductList
 
 
 urlpatterns = [
-    path('products/', ProductList.as_view())
+    path('list', ProductList.as_view())
 ]
