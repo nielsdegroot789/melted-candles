@@ -1,8 +1,12 @@
 from django.contrib import admin
 
-from apps.products.models import Product
+from apps.products.models import Product, Variant
+class VariantInline(admin.TabularInline):
+    model = Variant
+    extra = 0
 
 class ProductAdmin(admin.ModelAdmin):
-    pass
+    inlines =  [VariantInline]
 
+   
 admin.site.register(Product, ProductAdmin)

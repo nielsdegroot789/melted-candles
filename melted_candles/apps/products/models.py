@@ -1,6 +1,7 @@
 from django.db import models
 
 from apps.base.models import BaseModel
+from colorfield.fields import ColorField
 
 class Product(BaseModel):
     name = models.CharField(max_length=100)
@@ -11,3 +12,8 @@ class Product(BaseModel):
     # manage files with django https://docs.djangoproject.com/en/4.0/topics/files/
     def __str__(self):
         return self.name
+
+
+class Variant(BaseModel):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
+    color = ColorField(default='#FF0000')
