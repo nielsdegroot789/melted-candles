@@ -1,7 +1,0 @@
-STATUS_CHOICES = (
-    ('1', 'CREATED'),
-    ('2', 'PAID'),
-    ('3', 'CANCELLED'),
-    ('4', 'BOUNCED'),
-    ('5', 'COMPLETED')
-    )

@@ -1,9 +1,8 @@
-from http.client import CREATED
 from django.db import models
 from django.core.validators import RegexValidator
 
 from apps.base.models import BaseModel
-
+from apps.orders.order_choices import ORDER_CHOICES, DEFAULT_STATUS
 
 class Order(BaseModel):
     name = models.CharField(max_length=100)
@@ -20,10 +19,4 @@ class Order(BaseModel):
     address = models.CharField(max_length=100)
     pickup_date = models.DateTimeField()
     total = models.IntegerField()
-
-    status = models.CharField(
-        max_length=2,
-        choices=StatusChoices.choices,
-        default=StatusChoices.CREATED,
-    )
-    
+    status = models.CharField(max_length=1, choices=ORDER_CHOICES, default=DEFAULT_STATUS)
