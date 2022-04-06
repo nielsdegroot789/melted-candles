@@ -9,5 +9,5 @@ from apps.products.serializers import ProductSerializer
 class ProductList(APIView):
     def get(self, request):
         product = Product.objects.all()
-        serializer = ProductSerializer(product)
+        serializer = ProductSerializer(product, many=True)
         return Response(serializer.data)

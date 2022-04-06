@@ -4,5 +4,6 @@ from apps.products.models import Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    model = Product
-    fields = '__all__'
+    class Meta:
+        model = Product
+        fields = '__all__'

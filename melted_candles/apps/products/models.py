@@ -15,5 +15,5 @@ class Product(BaseModel):
 
 
 class Variant(BaseModel):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE, blank=True, null=True)
     color = ColorField(default='#FF0000')
