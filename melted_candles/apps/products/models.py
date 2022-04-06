@@ -17,3 +17,10 @@ class Product(BaseModel):
 class Variant(BaseModel):
     product = models.ForeignKey(Product,on_delete=models.CASCADE, blank=True, null=True)
     color = ColorField(default='#FF0000')
+
+    
+    # samples =COLOR_PALETTE
+    # COLOR_PALETTE = [
+    #     ("#FFFFFF", "white", ),
+    #     ("#000000", "black", ),
+    # ]
