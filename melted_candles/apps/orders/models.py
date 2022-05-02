@@ -7,8 +7,8 @@ from apps.orders.order_choices import ORDER_CHOICES, DEFAULT_STATUS
 
 class Order(BaseModel):
     email = models.EmailField(max_length=100)
-    address = models.CharField(max_length=100)
-    pickup_date = models.DateTimeField()
+    address = models.CharField(max_length=100, null=True)
+    pickup_date = models.DateTimeField(null=True)
     total = models.IntegerField()
     status = models.CharField(max_length=1, choices=ORDER_CHOICES, default=DEFAULT_STATUS)
 
