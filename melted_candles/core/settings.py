@@ -36,11 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'colorfield',
     'django.contrib.staticfiles',
     'apps.products',
     'apps.orders',
     'apps.base',
+    'colorfield'
 ]
 
 MIDDLEWARE = [
