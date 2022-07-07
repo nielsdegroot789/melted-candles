@@ -26,7 +26,8 @@ class OrderProductSerializer(serializers.Serializer):
 
     def validate(self, data):
         try:
-            Variant.objects.get(id=data.get("variant"), product=data.get("product"))
+            Variant.objects.get(id=data.get("variant"),
+                                product=data.get("product"))
         except Exception as e:
             raise e
         return data
@@ -39,6 +40,8 @@ class OrderProductSerializer(serializers.Serializer):
 
 
 class OrderUserSerializer(serializers.Serializer):
+    first_name = serializers.CharField()
+    last_name = serializers.CharField()
     email = serializers.EmailField()
     address = serializers.CharField()
     pickup_date = serializers.DateTimeField()
@@ -68,7 +71,9 @@ class CreateOrderSerializer(serializers.Serializer):
             address=validated_data['user']['address'],
             total=validated_data['user']['total'],
             pickup_date=validated_data['user']['pickup_date'],
-            phone=validated_data['user']['phone']
+            phone=validated_data['user']['phone'],
+            first_name=validated_data['user']['first_name'],
+            last_name=validated_data['user']['last_name']
         )
         for product in validated_data['products']:
             Order_Product.objects.create(
