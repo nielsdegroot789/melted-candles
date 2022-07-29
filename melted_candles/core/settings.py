@@ -1,3 +1,10 @@
+from pathlib import Path
+import os
+from dotenv import load_dotenv, find_dotenv
+
+# https://pypi.org/project/python-dotenv/
+# load .env file
+load_dotenv(find_dotenv())
 """
 Django settings for melted_candles project.
 
@@ -9,8 +16,6 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import os
-from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -120,12 +125,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-MEDIA_ROOT="media/"
-MEDIA_URL='/media/'
+MEDIA_ROOT = "media/"
+MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static") 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+if DEBUG:
+    STRIPE_PRIVATE_KEY = os.environ['STRIPE_PRIVATE_TEST_KEY']
+    STRIPE_PUBLIC_KEY = os.environ['STRIPE_PUBLIC_TEST_KEY']
+else:
+    STRIPE_PRIVATE_KEY = os.environ['STRIPE_PRIVATE_KEY']
+    STRIPE_PUBLIC_KEY = os.environ['STRIPE_PUBLIC_KEY']
