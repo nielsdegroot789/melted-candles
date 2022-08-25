@@ -64,6 +64,7 @@ class OrderSerializer(serializers.ModelSerializer):
 class CreateOrderSerializer(serializers.Serializer):
     products = OrderProductSerializer(many=True, write_only=True)
     user = OrderUserSerializer(write_only=True)
+    payment_method = serializers.CharField(write_only=True)
 
     def create(self, validated_data):
         order = Order.objects.create(
@@ -73,7 +74,8 @@ class CreateOrderSerializer(serializers.Serializer):
             pickup_date=validated_data['user']['pickup_date'],
             phone=validated_data['user']['phone'],
             first_name=validated_data['user']['first_name'],
-            last_name=validated_data['user']['last_name']
+            last_name=validated_data['user']['last_name'],
+            payment_method=validated_data['payment_method']
         )
         for product in validated_data['products']:
             Order_Product.objects.create(

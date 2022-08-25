@@ -1,10 +1,6 @@
 from pathlib import Path
 import os
-from dotenv import load_dotenv, find_dotenv
-
-# https://pypi.org/project/python-dotenv/
-# load .env file
-load_dotenv(find_dotenv())
+from decouple import config
 """
 Django settings for melted_candles project.
 
@@ -135,9 +131,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
 if DEBUG:
-    STRIPE_PRIVATE_KEY = os.environ['STRIPE_PRIVATE_TEST_KEY']
-    STRIPE_PUBLIC_KEY = os.environ['STRIPE_PUBLIC_TEST_KEY']
+    STRIPE_PRIVATE_KEY = config('STRIPE_PRIVATE_TEST_KEY')
+    STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_TEST_KEY')
 else:
-    STRIPE_PRIVATE_KEY = os.environ['STRIPE_PRIVATE_KEY']
-    STRIPE_PUBLIC_KEY = os.environ['STRIPE_PUBLIC_KEY']
+    STRIPE_PRIVATE_KEY = config('STRIPE_PRIVATE_KEY')
+    STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')

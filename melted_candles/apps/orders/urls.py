@@ -3,5 +3,5 @@ from apps.orders.views import CreateOrder
 
 
 urlpatterns = [
-    path('create', CreateOrder.as_view())
+    path('create', CreateOrder.as_view()),
 ]

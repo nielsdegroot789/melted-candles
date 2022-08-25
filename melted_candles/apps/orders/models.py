@@ -4,6 +4,7 @@ from django.core.validators import RegexValidator
 from apps.base.models import BaseModel
 from apps.products.models import Product, Variant
 from apps.orders.order_choices import ORDER_CHOICES, DEFAULT_STATUS
+from apps.orders.payment_choices import PAYMENT_CHOICES
 
 
 class Order(BaseModel):
@@ -15,7 +16,7 @@ class Order(BaseModel):
     total = models.IntegerField()
     status = models.CharField(
         max_length=1, choices=ORDER_CHOICES, default=DEFAULT_STATUS)
-
+    payment_method = models.CharField(choices=PAYMENT_CHOICES, max_length=1)
     # TODO: check wat die regex juist doet en welk formaat dit moet zijn
     phone_message = 'Telefoonnummer moet in dit formaat zijn: 05999999999'
     phone_regex = RegexValidator(
