@@ -1,0 +1,2 @@
+SETUP
+-activate virtualenv with venv\Scripts\activate  
